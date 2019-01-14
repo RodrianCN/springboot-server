@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.noahw.platform.persistence.mapper.UserMapper">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.noahw.platform.persistence.pojo.User">
+        <id column="id" property="id"/>
+        <result column="user_name" property="userName"/>
+        <result column="password" property="password"/>
+        <result column="delete_flag" property="deleteFlag"/>
+        <result column="create_time" property="createTime"/>
+        <result column="modify_time" property="modifyTime"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, user_name AS userName, password, delete_flag AS deleteFlag, create_time AS createTime, modify_time AS modifyTime
+    </sql>
+
+    <select id="getUserByName" resultMap="BaseResultMap">
+        select u.* from data_user u
+        where
+        1 = 1
+        <if test=" userName !=null and userName !=''">
+            and u.user_name = #{userName}
+        </if>
+        and u.delete_flag = 0;
+    </select>
+
+</mapper>
