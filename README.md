@@ -11,7 +11,7 @@ JSON Web Token (JWT)是一个开放标准(RFC 7519)，它定义了一种紧凑�
 Apache Shiro 是 Java 的一个安全框架。功能强大，使用简单的Java安全框架，它为开发人员提供一个直观而全面的认证，授权，加密及会话管理的解决方案。
 
 # 二、项目结构
-          当前版本V1.0.1
+          当前版本V1.0.2
           
           |-- src
               |-- test/java/com/noahw/platform
