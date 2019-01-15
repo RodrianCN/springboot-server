@@ -1,6 +1,7 @@
 package com.noahw.platform.service.impl;
 
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import com.noahw.platform.constants.CommonConstant;
 import com.noahw.platform.i18n.LocaleMessage;
 import com.noahw.platform.persistence.mapper.UserMapper;
 import com.noahw.platform.persistence.pojo.User;
@@ -8,6 +9,7 @@ import com.noahw.platform.result.LoginResult;
 import com.noahw.platform.service.UserService;
 import com.noahw.platform.util.CommonUtil;
 import com.noahw.platform.util.JWTUtil;
+import com.noahw.platform.util.Md5Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,7 +58,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
             return;
         }
 
-        if(!password.equals(user.getPassword())){
+        if(!Md5Utils.md5Encode(password, CommonConstant.DEFAULT_CHARSET).equals(user.getPassword())){
             CommonUtil.updateErrorResult(result, localeMessage.getMessage("username.or.password.error"));
             return;
         }
