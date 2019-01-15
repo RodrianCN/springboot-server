@@ -8,11 +8,10 @@ package com.noahw.platform.constants;
 
 * @CreateDate:     2019-01-11 9:38
 
-* @Version:        1.0
+* @Version:        1.0.1
 
 */
 public class ResultConstant {
-
     //统一交互成功CODE
     public static final int RESULTCODE_SUCCESS = 0;
 
@@ -23,5 +22,5 @@ public class ResultConstant {
     public static final String DESC_SUCCESS = "Success";
 
     //统一交互成功描述DESC
-    public static final String DESC_BUSINESS_FAIL = "Business failure";
+    public static final String DESC_INTERNAL_ERROR = "Internal Server Error";
 }

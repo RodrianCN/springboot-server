@@ -1,6 +1,6 @@
 package com.noahw.platform.controller;
 
-import com.alibaba.fastjson.JSONObject;
+import com.noahw.platform.dto.LoginInfo;
 import com.noahw.platform.exception.BusinessException;
 import com.noahw.platform.persistence.pojo.User;
 import com.noahw.platform.result.DataReturnResult;
@@ -11,6 +11,7 @@ import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -21,7 +22,7 @@ import org.springframework.web.bind.annotation.*;
 
 * @CreateDate:     2019-01-11 9:37
 
-* @Version:        1.0
+* @Version:        1.0.1
 
 */
 @RestController
@@ -50,9 +51,9 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public LoginResult login(@RequestBody JSONObject requestJson) throws BusinessException {
+    public LoginResult login(@Validated @RequestBody LoginInfo requestJson) throws BusinessException {
         LoginResult result = new LoginResult(null);
-        userService.login(requestJson.getString("username"), requestJson.getString("password"), result);
+        userService.login(requestJson.getUsername(), requestJson.getPassword(), result);
         return result;
     }
 }

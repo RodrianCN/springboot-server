@@ -14,7 +14,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 * @CreateDate:     2019-01-11 9:48
 
-* @Version:        1.0
+* @Version:        1.0.1
 
 */
 @SpringBootApplication
@@ -25,8 +25,6 @@ public class PlatformApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(PlatformApplication.class, args);
-
-        System.out.println("启动成功");
     }
 
 }

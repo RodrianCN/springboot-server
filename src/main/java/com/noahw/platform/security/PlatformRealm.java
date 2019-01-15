@@ -1,6 +1,5 @@
 package com.noahw.platform.security;
 
-import com.noahw.platform.exception.BusinessException;
 import com.noahw.platform.persistence.pojo.User;
 import com.noahw.platform.service.UserService;
 import com.noahw.platform.util.JWTUtil;
@@ -55,11 +54,7 @@ public class PlatformRealm extends AuthorizingRealm {
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         String username = JWTUtil.getUsername(principals.toString());
-        try {
-            User user = userService.getUserByName(username);
-        } catch (BusinessException e) {
-            e.printStackTrace();
-        }
+        User user = userService.getUserByName(username);
         SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
         return simpleAuthorizationInfo;
     }
@@ -77,12 +72,7 @@ public class PlatformRealm extends AuthorizingRealm {
         }
 
         User userBean = null;
-        try {
-            userBean = userService.getUserByName(username);
-        } catch (BusinessException e) {
-            e.printStackTrace();
-            throw new AuthenticationException("User didn't existed!");
-        }
+        userBean = userService.getUserByName(username);
         if (userBean == null) {
             throw new AuthenticationException("User didn't existed!");
         }
