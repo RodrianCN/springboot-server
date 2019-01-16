@@ -23,7 +23,7 @@ import java.util.Date;
 public class JWTUtil {
 
     // 过期时间5分钟
-    private static final long EXPIRE_TIME = 5*60*1000;
+    private static final long EXPIRE_TIME = 1*30*1000;
 
     /**
      * 校验token是否正确

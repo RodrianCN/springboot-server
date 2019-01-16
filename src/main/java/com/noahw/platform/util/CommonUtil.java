@@ -1,7 +1,7 @@
 package com.noahw.platform.util;
 
 import com.noahw.platform.base.BaseResult;
-import com.noahw.platform.constants.ResultConstant;
+import com.noahw.platform.constants.CommonConstant;
 
 /**
 
@@ -17,13 +17,11 @@ import com.noahw.platform.constants.ResultConstant;
 public class CommonUtil {
 
     public static BaseResult initErrorResult(String desc){
-        return new BaseResult(ResultConstant.RESULTCODE_FAIL, desc);
+        return new BaseResult(CommonConstant.INTERNAL_ERROR_RESP_CODE, desc);
     }
 
-    public static BaseResult updateErrorResult(BaseResult result, String desc){
-        result.setResultCode(ResultConstant.RESULTCODE_FAIL);
+    public static void updateErrorResult(BaseResult result, String desc){
+        result.setResultCode(CommonConstant.INTERNAL_ERROR_RESP_CODE);
         result.setDesc(desc);
-
-        return result;
     }
 }

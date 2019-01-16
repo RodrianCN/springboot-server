@@ -2,8 +2,10 @@
 ##A server demo with jwt/shiro/mybatis-plus etc.
 
 # 一、项目背景
-###Springboot作为轻量化框架已经受到广大开发者的喜爱,且适用于微服务敏捷开发及前后端分离。
-###本工程以Springboot为主体,结合shiro、jwt、mybatis-plus等框架/模块,形成一个基于接口交互的后端server demo。
+### Springboot作为轻量化框架已经受到广大开发者的喜爱,且适用于微服务敏捷开发及前后端分离。
+
+### 本工程以Springboot为主体,结合shiro、jwt、mybatis-plus等框架/模块,形成一个基于接口交互的后端server demo。 
+
 MyBatis-Plus（简称 MP）是一个 MyBatis 的增强工具，在 MyBatis 的基础上只做增强不做改变，为简化开发、提高效率而生。具有无侵入、损耗小、支持逐渐自动生成等特性。 
 
 JSON Web Token (JWT)是一个开放标准(RFC 7519)，它定义了一种紧凑的、自包含的方式，用于作为JSON对象在各方之间安全地传输信息。该信息可以被验证和信任，因为它是数字签名的。
@@ -11,7 +13,7 @@ JSON Web Token (JWT)是一个开放标准(RFC 7519)，它定义了一种紧凑�
 Apache Shiro 是 Java 的一个安全框架。功能强大，使用简单的Java安全框架，它为开发人员提供一个直观而全面的认证，授权，加密及会话管理的解决方案。
 
 # 二、项目结构
-          当前版本V1.0.2
+          当前版本V1.0.3
           
           |-- src
               |-- test/java/com/noahw/platform
@@ -30,6 +32,9 @@ Apache Shiro 是 Java 的一个安全框架。功能强大，使用简单的Java
                       |-- PlatformApplication.java 启动入口
                   |-- resources 资源文件目录
                       |-- config 配置资源
+                          |-- application-dev.properties 开发环境配置
+                          |-- application-product.properties 生产环境配置
+                          |-- logback-spring.xml 日志相关配置
                       |-- i18n 国际化资源
                       |-- application.properties
                       
@@ -51,11 +56,11 @@ Apache Shiro 是 Java 的一个安全框架。功能强大，使用简单的Java
 
 1.~~用户密码未做加密,目前正在考虑方案选择~~ 已使用md5加密
 
-2.JWT token校验错误当前返回HTTP STATUS CODE为401,待完善
+2.~~JWT token校验错误当前返回HTTP STATUS CODE为401,待完善~~ 统一返回HTTP STATUS CODE为200,根据resultCode统一处理返回码
 
 3.异常处理正在考虑更为合适的方案
 
-4.application.properties当前未做开发环境和生成环境的剥离
+4.~~application.properties当前未做开发环境和生成环境的剥离~~
 
 5.当前未做模块化,后续可改进
 

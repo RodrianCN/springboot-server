@@ -63,6 +63,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
             return;
         }
 
-        result.setToken(JWTUtil.sign(userName, password));
+        result.setToken(JWTUtil.sign(userName, user.getPassword()));
     }
 }

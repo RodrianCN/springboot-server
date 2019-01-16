@@ -13,5 +13,9 @@ package com.noahw.platform.constants;
 */
 public class CommonConstant {
 
+    //默认编码
     public static final String DEFAULT_CHARSET = "utf-8";
+
+    //服务错误返回code
+    public static final String INTERNAL_ERROR_RESP_CODE = "20000";
 }

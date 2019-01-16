@@ -32,31 +32,31 @@ public class ExceptionController {
     private LocaleMessage localeMessage;
 
     // 捕捉shiro的异常
-    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    @ResponseStatus(HttpStatus.OK)
     @ExceptionHandler(ShiroException.class)
     public BaseResult handle401(ShiroException e) {
-        return new BaseResult(401, e.getMessage());
+        return initResult(ResultConstant.ACCESS_DENIED);
     }
 
     // 捕捉UnauthorizedException
-    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    @ResponseStatus(HttpStatus.OK)
     @ExceptionHandler(UnauthorizedException.class)
     public BaseResult handle401() {
-        return new BaseResult(401, "Unauthorized");
+        return initResult(ResultConstant.ACCESS_DENIED);
     }
 
     //捕捉参数校验异常MethodArgumentNotValidException
     @ResponseStatus(HttpStatus.OK)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public BaseResult handleBusinessException() {
-        return new BaseResult(ResultConstant.RESULTCODE_FAIL, localeMessage.getMessage("para.error"));
+        return initResult(ResultConstant.PARAM_ERROR);
     }
 
     // 捕捉其他所有异常
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.OK)
     public BaseResult globalException() {
-        return new BaseResult(ResultConstant.RESULTCODE_FAIL, localeMessage.getMessage("internal.server.error"));
+        return initResult(ResultConstant.INTERNAL_SERVER_ERROR);
     }
 
     private HttpStatus getStatus(HttpServletRequest request) {
@@ -65,5 +65,12 @@ public class ExceptionController {
             return HttpStatus.INTERNAL_SERVER_ERROR;
         }
         return HttpStatus.valueOf(statusCode);
+    }
+
+    private BaseResult initResult(ResultConstant constant){
+        BaseResult result = new BaseResult();
+        result.setResultCode(constant.getResultCode());
+        result.setDesc(localeMessage.getMessage(constant.getMessage()));
+        return result;
     }
 }

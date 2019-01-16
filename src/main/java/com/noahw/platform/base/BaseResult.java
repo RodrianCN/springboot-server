@@ -1,7 +1,5 @@
 package com.noahw.platform.base;
 
-import com.noahw.platform.constants.ResultConstant;
-
 /**
 
 * @Description:    Result父类
@@ -14,26 +12,27 @@ import com.noahw.platform.constants.ResultConstant;
 
 */
 public class BaseResult {
-    // http 状态码
-    private int resultCode = ResultConstant.RESULTCODE_SUCCESS;
+
+    // 返回状态码
+    private String resultCode = "10000";
 
     // 返回信息
-    private String desc = ResultConstant.DESC_SUCCESS;
+    private String desc = "操作成功";
 
-    public BaseResult(int resultCode, String desc) {
+    public BaseResult(String resultCode, String desc) {
         this.resultCode = resultCode;
         this.desc = desc;
     }
 
-    public BaseResult() {
+    public BaseResult(){
 
     }
 
-    public int getResultCode() {
+    public String getResultCode() {
         return resultCode;
     }
 
-    public void setResultCode(int resultCode) {
+    public void setResultCode(String resultCode) {
         this.resultCode = resultCode;
     }
 

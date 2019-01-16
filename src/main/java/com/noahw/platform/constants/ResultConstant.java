@@ -2,7 +2,7 @@ package com.noahw.platform.constants;
 
 /**
 
-* @Description:    Result相关常量
+* @Description:    Result参数枚举
 
 * @Author:         noahw
 
@@ -11,16 +11,48 @@ package com.noahw.platform.constants;
 * @Version:        1.0.1
 
 */
-public class ResultConstant {
-    //统一交互成功CODE
-    public static final int RESULTCODE_SUCCESS = 0;
+public enum ResultConstant {
 
-    //统一交互失败CODE
-    public static final int RESULTCODE_FAIL = 1;
+    //服务异常
+    INTERNAL_SERVER_ERROR("20000", "internal.server.error"),
 
-    //统一交互成功描述DESC
-    public static final String DESC_SUCCESS = "Success";
+    //业务处理成功
+    SUCCESS("10000", "success"),
 
-    //统一交互成功描述DESC
-    public static final String DESC_INTERNAL_ERROR = "Internal Server Error";
-}
+    //token过期或无效(包含未登陆)
+    ACCESS_DENIED("30000", "access.denied"),
+
+    //参数错误
+    PARAM_ERROR("40001", "param.error"),
+
+    //无操作权限
+    PERMISSION_DENIED("30001", "permission.denied"),
+
+    //操作失败
+    OPERATE_FAIL("40000", "operate.fail"),
+
+    ;
+
+    public String resultCode;
+    public String message;
+
+    ResultConstant(String resultCode, String message) {
+        this.resultCode = resultCode;
+        this.message = message;
+    }
+
+    public String getResultCode() {
+        return resultCode;
+    }
+
+    public void setResultCode(String resultCode) {
+        this.resultCode = resultCode;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }}
