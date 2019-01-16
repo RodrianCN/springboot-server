@@ -29,7 +29,7 @@ public enum ResultConstant {
     PERMISSION_DENIED("30001", "permission.denied"),
 
     //操作失败
-    OPERATE_FAIL("40000", "operate.fail"),
+    OPERATE_FAIL("40000", "operation.failed"),
 
     ;
 
