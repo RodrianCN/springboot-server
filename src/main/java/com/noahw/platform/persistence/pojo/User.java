@@ -3,6 +3,7 @@ package com.noahw.platform.persistence.pojo;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableField;
+import com.baomidou.mybatisplus.annotations.TableLogic;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.baomidou.mybatisplus.enums.FieldFill;
 
@@ -25,6 +26,7 @@ public class User extends Model<User> {
 
     private long id;
 
+    @TableLogic
     @TableField("delete_flag")
     private int deleteFlag;
 
